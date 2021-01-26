@@ -37,7 +37,25 @@ export const store = createStore<State>({
     decrement (state) {
       state.glasses--
     },
-  }
+  },
+  getters: {
+    glasses({ glasses }) {
+      return glasses
+    },
+    glassesGoal({ options }) {
+      return options.glassesGoal
+    },
+    getGoalPercent({ glasses, options }) {
+      console.log(glasses / options.glassesGoal * 100)
+      return glasses / options.glassesGoal * 100
+    },
+    units({ options }) {
+      return options.units.label
+    },
+    glassesLocale(state) {
+      return state.glasses * state.options.units.nPerGlass
+    },
+  },
 })
 
 export default store

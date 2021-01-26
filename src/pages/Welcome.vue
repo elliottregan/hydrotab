@@ -1,10 +1,11 @@
 <template>
   <main>
+    <Background />
     <div class="welcome">
       <div class="percent">
         <TotalGlasses />
       </div>
-      <div class="total-units"><TotalGlasses /> of <Goal /></div>
+      <div class="total-units">{{ glasses }} of {{ glassesGoal }} glasses</div>
       <div class="button-row">
         <UpdateTotal />
       </div>
@@ -19,8 +20,10 @@ import { defineComponent } from 'vue'
 import TotalGlasses from '../components/TotalGlasses.vue'
 import Goal from '../components/Goal.vue'
 import UpdateTotal from '../components/UpdateTotal.vue'
+import Background from '../components/Background.vue'
 import Icon from '../components/Icon'
 import SettingsLink from '../components/navigation/SettingsLink.vue'
+import { mapGetters } from 'vuex'
 
 export default defineComponent({
   components: {
@@ -29,6 +32,13 @@ export default defineComponent({
     UpdateTotal,
     SettingsLink,
     Icon,
+    Background,
+  },
+  computed: {
+    ...mapGetters([
+      'glasses',
+      'glassesGoal',
+    ]),
   },
   setup() {
     return {}

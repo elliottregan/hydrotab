@@ -7,11 +7,13 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "animejs": "^3.2.1",
     "feather-icons": "^4.28.0",
     "vue": "^3.0.5",
     "vuex": "^4.0.0-rc.2"
   },
   "devDependencies": {
+    "@types/animejs": "^3.1.2",
     "@types/feather-icons": "^4.7.0",
     "@vitejs/plugin-vue": "^1.1.2",
     "@vue/compiler-sfc": "^3.0.5",

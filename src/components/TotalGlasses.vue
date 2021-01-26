@@ -1,13 +1,28 @@
 <template>
-    <span>{{ glasses }}</span>
+  <span ref="totalValue">{{ getGoalPercent }}</span>%
 </template>
 
 <script>
-import store from '../store'
+import { mapGetters } from 'vuex';
+import anime from 'animejs'
+
 export default {
   computed: {
-    glasses () {
-      return store.state.glasses
+    ...mapGetters([
+      'getGoalPercent',
+    ]),
+  },
+  watch: {
+    getGoalPercent(newValue, oldValue) {
+      const animatedNumber = { value: oldValue }
+      anime({
+        targets: animatedNumber,
+        value: newValue,
+        easing: 'easeOutSine',
+        update: () => {
+          this.$refs.totalValue.innerHTML = animatedNumber.value.toFixed(0)
+        },
+      });
     }
   }
 }
