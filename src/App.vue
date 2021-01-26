@@ -2,14 +2,15 @@
   <Welcome />
 </template>
 
-<script>
-import Welcome from './pages/Welcome.vue'
+<script lang="ts">
 import './styles/index.scss'
+import { defineComponent } from 'vue'
+import Welcome from './pages/Welcome.vue'
 
-export default {
+export default defineComponent({
   name: 'App',
   components: {
     Welcome,
   }
-}
+})
 </script>

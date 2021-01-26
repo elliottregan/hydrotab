@@ -3,13 +3,14 @@
 </template>
 
 <script>
-  export default {
-    computed: {
-      glasses () {
-        return store.state.glasses
-      }
+import store from '../store'
+export default {
+  computed: {
+    glasses () {
+      return store.state.glasses
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>

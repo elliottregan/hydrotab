@@ -1,11 +1,11 @@
 <template>
   <main>
-    <div className="Welcome">
-      <div className="percent">
+    <div class="welcome">
+      <div class="percent">
         <TotalGlasses />
       </div>
-      <div className="total-units"><TotalGlasses /> of <Goal /></div>
-      <div className="button-row">
+      <div class="total-units"><TotalGlasses /> of <Goal /></div>
+      <div class="button-row">
         <UpdateTotal />
       </div>
       <Icon :name="'plus-circle'" />
@@ -30,16 +30,14 @@ export default defineComponent({
     SettingsLink,
     Icon,
   },
-  setup () {
-    
-
+  setup() {
     return {}
-  }
+  },
 })
 </script>
 
 <style scoped>
-.Welcome {
+.welcome {
   max-width: 45rem;
 }
 
@@ -60,6 +58,11 @@ export default defineComponent({
 .total-units {
   color: #666;
   font-size: 1.5em;
+  text-align: left;
+}
+
+.row {
+  display: inline-flex;
 }
 
 .button-row {
