@@ -46,8 +46,7 @@ export const store = createStore<State>({
       return options.glassesGoal
     },
     getGoalPercent({ glasses, options }) {
-      console.log(glasses / options.glassesGoal * 100)
-      return glasses / options.glassesGoal * 100
+      return (glasses / options.glassesGoal * 100)
     },
     units({ options }) {
       return options.units.label

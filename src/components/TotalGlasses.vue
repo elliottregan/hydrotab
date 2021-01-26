@@ -1,5 +1,5 @@
 <template>
-  <span ref="totalValue">{{ getGoalPercent }}</span>%
+  <span ref="totalValue">0</span>%
 </template>
 
 <script>
