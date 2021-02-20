@@ -12,6 +12,9 @@ export default {
       'getGoalPercent',
     ]),
   },
+  mounted() {
+    this.$refs.totalValue.innerText = this.getGoalPercent.toFixed(0)
+  },
   watch: {
     getGoalPercent(newValue, oldValue) {
       const animatedNumber = { value: oldValue }
@@ -20,7 +23,7 @@ export default {
         value: newValue,
         easing: 'easeOutSine',
         update: () => {
-          this.$refs.totalValue.innerHTML = animatedNumber.value.toFixed(0)
+          this.$refs.totalValue.innerText = animatedNumber.value.toFixed(0)
         },
       });
     }

@@ -1,6 +1,7 @@
 import { InjectionKey } from 'vue'
 import { createStore } from 'vuex'
 import { Store } from 'vuex'
+import persistData from './plugins/persistData';
 
 type Unit = {
   label: string,
@@ -20,6 +21,8 @@ export interface State {
 export const key: InjectionKey<Store<State>> = Symbol()
 
 export const store = createStore<State>({
+  plugins: [persistData],
+
   state: {
     glasses: 0,
     options: {
