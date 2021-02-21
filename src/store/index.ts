@@ -1,10 +1,10 @@
 import { InjectionKey } from 'vue'
 import { createStore } from 'vuex'
 import { Store } from 'vuex'
+import persistData from './plugins/persistData';
+import resetDaily from './plugins/resetDaily';
 
 import mutations from './mutations'
-
-import persistData from './plugins/persistData';
 
 type Unit = {
   label: string,
@@ -13,6 +13,7 @@ type Unit = {
 
 // define your typings for the store state
 export interface State {
+  dateCreated: String,
   glasses: number,
   options: {
     glassesGoal: number,
@@ -24,9 +25,10 @@ export interface State {
 export const key: InjectionKey<Store<State>> = Symbol()
 
 export const store = createStore<State>({
-  plugins: [persistData],
+  plugins: [persistData, resetDaily],
 
   state: {
+    dateCreated: new Date().toLocaleDateString(),
     glasses: 0,
     options: {
       glassesGoal: 8,
