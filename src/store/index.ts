@@ -1,6 +1,9 @@
 import { InjectionKey } from 'vue'
 import { createStore } from 'vuex'
 import { Store } from 'vuex'
+
+import mutations from './mutations'
+
 import persistData from './plugins/persistData';
 
 type Unit = {
@@ -33,14 +36,7 @@ export const store = createStore<State>({
       }
     },
   },
-  mutations: {
-    increment (state) {
-      state.glasses++
-    },
-    decrement (state) {
-      state.glasses--
-    },
-  },
+  mutations,
   getters: {
     glasses({ glasses }) {
       return glasses

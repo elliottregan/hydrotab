@@ -9,7 +9,6 @@
       <div class="button-row">
         <UpdateTotal />
       </div>
-      <Icon :name="'plus-circle'" />
       <SettingsLink class="settings-link" />
     </div>
   </main>
