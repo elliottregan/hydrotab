@@ -1,7 +1,7 @@
 <template>
-  <router-link to="/settings" class="btn btn--ghost">
-    <Icon :name="'settings'" />
-    <span>Settings</span>
+  <router-link to="/" class="btn btn--ghost">
+    <Icon :name="'home'" />
+    <span>Home</span>
   </router-link>
 </template>
 

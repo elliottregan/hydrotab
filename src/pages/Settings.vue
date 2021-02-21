@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="content-container">
     <h1>Settings</h1>
     <div class="field">
       <label for="goal">Goal (glasses):</label>

@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="centered-content">
     <Background />
     <div class="welcome">
       <div class="percent">
@@ -9,7 +9,6 @@
       <div class="button-row">
         <UpdateTotal />
       </div>
-      <SettingsLink class="settings-link" />
     </div>
   </main>
 </template>
@@ -21,7 +20,6 @@ import Goal from '../components/Goal.vue'
 import UpdateTotal from '../components/UpdateTotal.vue'
 import Background from '../components/Background.vue'
 import Icon from '../components/Icon'
-import SettingsLink from '../components/navigation/SettingsLink.vue'
 import { mapGetters } from 'vuex'
 
 export default defineComponent({
@@ -29,7 +27,6 @@ export default defineComponent({
     TotalGlasses,
     Goal,
     UpdateTotal,
-    SettingsLink,
     Icon,
     Background,
   },
@@ -46,6 +43,12 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .welcome {
   max-width: 45rem;
 }
@@ -56,12 +59,6 @@ export default defineComponent({
   text-align: left;
   margin-left: -0.05em;
   font-family: var(--font-serif);
-}
-
-.settings-link {
-  position: fixed;
-  right: 1rem;
-  top: 1rem;
 }
 
 .total-units {
