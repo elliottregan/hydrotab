@@ -34,25 +34,56 @@
 
 <script lang="ts">
 import anime from 'animejs';
-// import './styles/index.scss'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'Background',
   mounted() {
     const shape1 = <SVGSVGElement>this.$refs.shape1
-    anime({
-      targets: shape1,
-      translateX: '15%',
-      translateY: '5%',
-      duration: 10000,
-      loop: true,
-      direction: "alternate",
-      // d: shape1.dataset.altD,
-      easing: "easeInOutBack",
-    });
-  }
+    const shape2 = <SVGSVGElement>this.$refs.shape2
+    const shape3 = <SVGSVGElement>this.$refs.shape3
+    this.animateShape(shape1)
+    this.animateShape(shape2)
+    this.animateShape(shape3)
+
+    const path1 = <SVGPathElement>this.$refs.path1
+    const path2 = <SVGPathElement>this.$refs.path2
+    const path3 = <SVGPathElement>this.$refs.path3
+    this.animatePath(path1)
+    this.animatePath(path2)
+    this.animatePath(path3)
+
+  },
+  methods: {
+    animateShape(shape:SVGSVGElement) {
+      anime({
+        targets: shape,
+        translateX: '15%',
+        translateY: '5%',
+        duration: random(8000, 12000),
+        loop: true,
+        direction: "alternate",
+        easing: "easeInOutBack",
+      });
+    },
+    animatePath(path:SVGPathElement) {
+      anime({
+        targets: path,
+        duration: random(8000, 20000),
+        easing: 'easeInOutBack',
+        d: path?.dataset.altD,
+        loop: true,
+        direction: "alternate",
+      })
+    }
+  },
 })
+
+const random = (min = 0, max = 50) => {
+    let num = Math.random() * (max - min) + min;
+    return Math.round(num);
+};
+
 </script>
 
 <style lang="scss" scoped>
@@ -63,7 +94,7 @@ export default defineComponent({
   bottom: 0;
   left: 0;
   z-index: -1;
-  // background-image: linear-gradient(120deg, transparentize(#a1c4fd, 0.5) 20%,  transparentize(#c2e9fb, 0.5) 100%);
+  background-image: linear-gradient(120deg, transparentize(#a1c4fd, 0.5) 20%,  transparentize(#c2e9fb, 0.5) 100%);
 }
 
 .shape-wrap {
