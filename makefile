@@ -1,9 +1,9 @@
 all: run
 
-build:
+container:
 	docker build -t hydrotab .
 
-run: build
+run: container
 	docker run --rm -it \
 	--name hydrotab \
 	-p 3000:3000 \
@@ -12,3 +12,12 @@ run: build
 
 develop:
 	make run c="npm run dev"
+
+develop-browser:
+	make run c="npm run dev:browser"
+
+build:
+	make run c="npm run build"
+
+build-browser:
+	make run c="npm run build:browser"
