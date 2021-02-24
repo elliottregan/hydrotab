@@ -20,6 +20,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         'main': './index.html',
+        'background': './background.html',
       },
       output: {
         entryFileNames: '[name].js',

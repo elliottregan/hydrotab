@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vuedx-typecheck . && vite build",
+    "build:browser": "vuedx-typecheck . && vite build -c vite.config.browser.ts",
     "serve": "vite preview"
   },
   "dependencies": {
