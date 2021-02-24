@@ -1,0 +1,26 @@
+{
+  "name": "Hydrotab",
+  "version": "0.0.1",
+  "background": {
+    "page": "background.html"
+  },
+  "permissions": ["storage"],
+  "manifest_version": 2,
+  "icons": {
+    "16": "wave.svg",
+    "48": "wave.svg",
+    "128": "wave.svg"
+  },
+  "browser_action": {
+    "default_icon": "wave.svg",
+    "default_title": "Hydrotab",
+    "default_popup": "popup.html"
+  },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "options_ui": {
+    "page": "index.html",
+    "open_in_tab": true
+  }
+}

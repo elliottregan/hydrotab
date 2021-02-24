@@ -9,7 +9,7 @@ export default function init(store:Store<any>) {
     initializeStore(store, cache.getItem(storage.name) || '')
   }
 
-  store.subscribe((mutation, state) => {
+  store.subscribe((_mutation, state) => {
     cache.setItem(storage.name, JSON.stringify(state));
   });
 

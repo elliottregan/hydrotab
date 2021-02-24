@@ -1,7 +1,8 @@
 import { h } from 'vue'
 import { icons } from "feather-icons";
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   props: {
     name: String,
   },
@@ -9,4 +10,4 @@ export default {
     const { attrs, contents } = icons[props.name]
     return h('svg', {...attrs, innerHTML: contents})
   },
-}
+})

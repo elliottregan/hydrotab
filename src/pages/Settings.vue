@@ -19,8 +19,8 @@ export default defineComponent({
     ...mapState(['options']),
   },
   methods: {
-    updateGoal(e: { target: { value: any } }) {
-      this.$store.commit('updateGoal', e.target.value)
+    updateGoal({ target }:Event) {
+      this.$store.commit('updateGoal', (<HTMLInputElement>target).value)
     }
   }
 })

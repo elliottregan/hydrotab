@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 
 import Welcome from '../pages/Welcome.vue';
 import Settings from '../pages/Settings.vue';
@@ -11,10 +11,11 @@ const routes = [
   {
     path: '/settings',
     component: Settings,
-  }
+  },
 ]
 
 export default createRouter({
-  history: createWebHistory(),
+  // createWebHashHistory is requored because WebHistory isn't available
+  history: createWebHashHistory(),
   routes,
 });

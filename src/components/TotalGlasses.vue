@@ -3,6 +3,7 @@
 </template>
 
 <script>
+// @ts-nocheck
 import { mapGetters } from 'vuex';
 import anime from 'animejs'
 

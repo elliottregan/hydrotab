@@ -1,9 +1,9 @@
 <template>
-  <button type="button" className="btn btn--primary" @click="increaseTotal">
+  <button type="button" class="btn btn--primary" @click="increaseTotal">
     <span class="icon" v-html="getIcon()"></span> <span>Drink a glass</span>
   </button>
 
-  <button type="button" className="btn" @click="decreaseTotal">
+  <button type="button" class="btn" @click="decreaseTotal">
     <span>Undo</span>
   </button>
 </template>
