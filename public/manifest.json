@@ -12,7 +12,7 @@
     "128": "wave.svg"
   },
   "browser_action": {
-    "default_icon": "wave.svg",
+    "default_icon": "wave.png",
     "default_title": "Hydrotab",
     "default_popup": "popup.html"
   },
