@@ -18,7 +18,6 @@ import { defineComponent } from 'vue'
 import TotalGlasses from '../components/TotalGlasses.vue'
 import Goal from '../components/Goal.vue'
 import UpdateTotal from '../components/UpdateTotal.vue'
-import Background from '../components/Background.vue'
 import Icon from '../components/Icon'
 import { mapGetters } from 'vuex'
 
@@ -28,7 +27,6 @@ export default defineComponent({
     Goal,
     UpdateTotal,
     Icon,
-    Background,
   },
   computed: {
     ...mapGetters([

@@ -5,10 +5,12 @@ import Settings from '../pages/Settings.vue';
 
 const routes = [
   {
+    name: 'Home',
     path: '/',
     component: Welcome,
   },
   {
+    name: 'Settings',
     path: '/settings',
     component: Settings,
   },

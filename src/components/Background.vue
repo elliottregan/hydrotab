@@ -1,6 +1,6 @@
 <template>
   <div class="background">
-    <div class="shape-wrap">
+    <div class="shape-wrap" :style="{ bottom: fillPercent + '%' }">
       <svg ref="shape1" class="shape" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           ref="path1"
@@ -38,6 +38,12 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'Background',
+  props: {
+    fillPercent: {
+      type: Number,
+      default: 0,
+    }
+  },
   mounted() {
     const shape1 = <SVGSVGElement>this.$refs.shape1
     const shape2 = <SVGSVGElement>this.$refs.shape2
@@ -98,12 +104,18 @@ const random = (min = 0, max = 50) => {
 }
 
 .shape-wrap {
-  position: relative;
+  position: absolute;
+  width: 100%;
+  height: 100vw * 320/1440;
+  bottom: 0;
+  transition: bottom 1s ease-in-out;
+  box-shadow: 0 100vh 0 100vh var(--color-primary-transparent);
+  overflow: hidden;
 }
 
 .shape {
-  position: fixed;
-  bottom: 0;
+  position: absolute;
+  bottom: -5px;
   width: 200%;
   left: -50%;
   z-index: 1;

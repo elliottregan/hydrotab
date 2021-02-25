@@ -11,6 +11,7 @@
   --color-primary-lit: 50%;
   
   --color-primary: hsl(var(--color-primary-hue), var(--color-primary-sat), var(--color-primary-lit));
+  --color-primary-transparent: hsla(var(--color-primary-hue), var(--color-primary-sat), var(--color-primary-lit), var(--color-opacity, 0.49));
   --color-primary-darker: hsl(var(--color-primary-hue), var(--color-primary-sat), calc(var(--color-primary-lit) - 5%));
   --color-primary-darkest: hsl(var(--color-primary-hue), var(--color-primary-sat), calc(var(--color-primary-lit) - 10%)); 
   

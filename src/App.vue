@@ -1,25 +1,42 @@
 <template>
   <div class="app-wrapper">
     <nav class="header-bar content-container">
-      <SettingsLink />
-      <HomeLink />
+      <SettingsLink v-if="isHome" />
+      <BackLink v-if="!isHome" />
     </nav>
     <router-view class="app-content"/>
+    <Background :fill-percent="fillPercent" />
   </div>
 </template>
 
 <script lang="ts">
 import './styles/index.scss'
 import { defineComponent } from 'vue'
+import Background from './components/Background.vue'
 import SettingsLink from './components/navigation/SettingsLink.vue'
 import HomeLink from './components/navigation/HomeLink.vue'
+import BackLink from './components/navigation/BackLink.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
     SettingsLink,
     HomeLink,
-  }
+    BackLink,
+    Background,
+  },
+  computed: {
+    isHome() {
+      return this.$route.matched.some(({ name }) => name === 'Home')
+    },
+    fillPercent() {
+      if (this.isHome) {
+        return this.$store.getters.getGoalPercent
+      } else {
+        return 100
+      }
+    }
+  },
 })
 </script>
 
