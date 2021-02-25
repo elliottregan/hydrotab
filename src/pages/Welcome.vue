@@ -1,6 +1,5 @@
 <template>
   <main class="centered-content">
-    <Background />
     <div class="welcome">
       <div class="percent">
         <TotalGlasses />

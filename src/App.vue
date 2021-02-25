@@ -4,7 +4,11 @@
       <SettingsLink v-if="isHome" />
       <BackLink v-if="!isHome" />
     </nav>
-    <router-view class="app-content"/>
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <component class="app-content" :is="Component" />
+      </transition>
+    </router-view>
     <Background :fill-percent="fillPercent" />
   </div>
 </template>
@@ -67,5 +71,15 @@ export default defineComponent({
 
 .app-content {
   flex: 1 0 auto;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 500ms ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
