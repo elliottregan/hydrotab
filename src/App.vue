@@ -29,11 +29,16 @@ export default defineComponent({
     isHome() {
       return this.$route.matched.some(({ name }) => name === 'Home')
     },
+    isSettings() {
+      return this.$route.matched.some(({ name }) => name === 'Settings')
+    },
     fillPercent() {
       if (this.isHome) {
         return this.$store.getters.getGoalPercent
-      } else {
+      } else if (this.isSettings) {
         return 100
+      } else {
+        return 0
       }
     }
   },
