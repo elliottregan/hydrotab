@@ -15,7 +15,9 @@
   --color-primary-darker: hsl(var(--color-primary-hue), var(--color-primary-sat), calc(var(--color-primary-lit) - 5%));
   --color-primary-darkest: hsl(var(--color-primary-hue), var(--color-primary-sat), calc(var(--color-primary-lit) - 10%)); 
   
-  
+  --color-shadow: hsla(var(--color-primary-hue), var(--color-primary-sat), 30%, 0.2);
+  --color-content-bg: #fff;
+
   --font-serif: 'Abril Fatface', cursive;
   --font-sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
 }
@@ -27,6 +29,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
+  margin: 0;
 }
 
 h1 {
@@ -37,6 +40,12 @@ h1 {
   max-width: 60rem;
   padding: 0 1rem;
   margin: 0 auto;
+}
+
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .field {

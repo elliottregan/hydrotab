@@ -14,6 +14,7 @@ export default {
     state.glasses++
   },
   decrement (state:State) {
+    if (state.glasses === 0) return;
     state.glasses--
   },
 }

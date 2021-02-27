@@ -1,15 +1,14 @@
 <template>
-  <main class="centered-content">
-    <div class="welcome">
-      <div class="percent">
-        <TotalGlasses />
-      </div>
-      <div class="total-units">{{ glasses }} of {{ glassesGoal }} glasses</div>
-      <div class="button-row">
-        <UpdateTotal />
-      </div>
+  <div>
+    <div class="percent">
+      <TotalGlasses />
     </div>
-  </main>
+    <div class="total-units">{{ glasses }} of {{ glassesGoal }} glasses</div>
+    <div class="button-row">
+      <UpdateTotal />
+      <!-- <DrinkNotification /> -->
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -18,6 +17,7 @@ import TotalGlasses from '../components/TotalGlasses.vue'
 import Goal from '../components/Goal.vue'
 import UpdateTotal from '../components/UpdateTotal.vue'
 import Icon from '../components/Icon'
+import DrinkNotification from '../components/DrinkNotification.vue'
 import { mapGetters } from 'vuex'
 
 export default defineComponent({
@@ -26,6 +26,7 @@ export default defineComponent({
     Goal,
     UpdateTotal,
     Icon,
+    DrinkNotification,
   },
   computed: {
     ...mapGetters([
@@ -33,21 +34,14 @@ export default defineComponent({
       'glassesGoal',
     ]),
   },
-  setup() {
-    return {}
-  },
+
 })
 </script>
 
 <style scoped>
-.centered-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .welcome {
   max-width: 45rem;
+  margin: auto;
 }
 
 .percent {

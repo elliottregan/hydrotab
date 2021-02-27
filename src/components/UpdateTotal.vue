@@ -1,29 +1,33 @@
 <template>
   <button type="button" class="btn btn--primary" @click="increaseTotal">
-    <span class="icon" v-html="getIcon()"></span> <span>Drink a glass</span>
+    <Icon :name="'plus-circle'" />
+    <span>Drink a glass</span>
   </button>
 
-  <button type="button" class="btn" @click="decreaseTotal">
-    <span>Undo</span>
+  <button title="Remove a glass" type="button" class="btn" @click="decreaseTotal" :style="{ opacity: (total > 0 ? '1' : '0') }">
+    <Icon :name="'minus-circle'" />
   </button>
 </template>
 
 <script>
-import feather from 'feather-icons'
 import store from '../store'
+import Icon from '../components/Icon'
 
 export default {
-  components: {},
+  components: {
+    Icon,
+  },
+
+  computed: {
+    total() {
+      return store.getters.glasses
+    }
+  },
 
   methods: {
-    getIcon() {
-      return feather.icons['plus-circle'].toSvg()
-    },
-
     increaseTotal() {
       store.commit('increment')
     },
-
     decreaseTotal() {
       store.commit('decrement')
     },

@@ -4,16 +4,19 @@
       <SettingsLink v-if="isHome" />
       <BackLink v-if="!isHome" />
     </nav>
-    <router-view v-slot="{ Component }">
-      <transition name="fade" mode="out-in">
-        <component class="app-content" :is="Component" />
-      </transition>
-    </router-view>
+    <main class="app-content centered-content">
+      <router-view v-slot="{ Component }">
+        <transition name="fade" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
+    </main>
     <Background :fill-percent="fillPercent" />
   </div>
 </template>
 
 <script lang="ts">
+// @ts-nocheck
 import './styles/index.scss'
 import { defineComponent } from 'vue'
 import Background from './components/Background.vue'
@@ -28,6 +31,10 @@ export default defineComponent({
     HomeLink,
     BackLink,
     Background,
+  },
+  data() {
+    return {
+    }
   },
   computed: {
     isHome() {
@@ -56,8 +63,12 @@ export default defineComponent({
   padding: 1rem;
   opacity: 0.65;
   transition: opacity ease 300ms;
+  position: fixed;
+  left: 0;
+  bottom: 0;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     opacity: 1;
   }
 }

@@ -5,6 +5,8 @@
     "moduleResolution": "node",
     "strict": true,
     "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": false,
+    "noImplicitAny": false,
     "jsx": "preserve",
     "sourceMap": true,
     "lib": ["esnext", "dom"],
