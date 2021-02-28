@@ -3,6 +3,7 @@
     <nav class="header-bar content-container">
       <SettingsLink v-if="isHome" />
       <BackLink v-if="!isHome" />
+      <pre><wbr></pre>
     </nav>
     <main class="app-content centered-content content-container">
       <router-view v-slot="{ Component }">
@@ -23,6 +24,10 @@ import Background from './components/Background.vue'
 import SettingsLink from './components/navigation/SettingsLink.vue'
 import HomeLink from './components/navigation/HomeLink.vue'
 import BackLink from './components/navigation/BackLink.vue'
+
+const env = import.meta.env
+
+console.log(env)
 
 export default defineComponent({
   name: 'App',

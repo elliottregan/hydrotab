@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import copy from 'rollup-plugin-copy'
+import inject from '@rollup/plugin-inject';
 
 export default defineConfig({
   plugins: [
@@ -14,6 +15,9 @@ export default defineConfig({
       ],
       hook: 'writeBundle'
     }),
+    inject({
+      browser: ['webextension-polyfill-ts', 'browser'],
+    })
   ],
   build: {
     sourcemap: true,

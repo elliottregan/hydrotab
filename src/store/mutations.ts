@@ -11,6 +11,7 @@ export default {
     state.glasses = newTotal
   },
   increment (state:State) {
+    console.log('increment')
     state.glasses++
   },
   decrement (state:State) {

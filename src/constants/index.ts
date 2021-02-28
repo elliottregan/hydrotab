@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
-import storage from './storage';
+import storage, { BrowserStoragePolymorph } from './storage';
 
 export {
   storage,
+  BrowserStoragePolymorph,
 };

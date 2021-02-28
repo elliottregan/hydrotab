@@ -1,11 +1,17 @@
-import { storage } from '../../constants';
+import { storage, BrowserStoragePolymorph } from '../../constants';
 import { Store } from 'vuex'
 
 const { cache } = storage;
 
+const polyStore = new BrowserStoragePolymorph('localStorage')
+const polyStore2 = new BrowserStoragePolymorph('sessionStorage')
+
 export default function init(store:Store<any>) {
   const cachedStore = cache.getItem(storage.name)
   const jsonStore = JSON.parse(cachedStore || '')
+
+  console.log(polyStore.getItem(storage.name))
+  console.log(polyStore2.getItem(storage.name))
 
   if (cache.getItem(storage.name) && shallowKeysEqual(jsonStore, store.state)) {
     initializeStore(store, jsonStore)
