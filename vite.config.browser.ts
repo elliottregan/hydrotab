@@ -15,11 +15,10 @@ export default defineConfig({
       ],
       hook: 'writeBundle'
     }),
-    inject({
-      browser: ['webextension-polyfill-ts', 'browser'],
-    })
   ],
   build: {
+    write: true,
+    target: 'esnext',
     sourcemap: true,
     rollupOptions: {
       input: {
@@ -29,7 +28,12 @@ export default defineConfig({
       },
       output: {
         entryFileNames: '[name].js',
-      }
+      },
+      plugins: [
+        inject({
+          browser: ['webextension-polyfill-ts', 'browser'],
+        }),
+      ]
     }
   }
 })

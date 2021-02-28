@@ -1,5 +1,4 @@
-import { browser } from 'webextension-polyfill-ts';
-
+// @ts-nocheck
 browser.runtime.onInstalled.addListener(async ({ reason }) => {
   if (reason === 'install') {
     return browser.tabs.create({
