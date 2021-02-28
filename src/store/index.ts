@@ -33,7 +33,7 @@ export const store = createStore<State>({
   plugins: [
     persistData,
     resetDaily,
-    resetOnDelay('updateGlassRequired', true, 60*60),
+    resetOnDelay('updateGlassRequired', true, 60*60*1000),
     mutateOnMutate('increment', 'updateGlassRequired', false),
   ],
 
