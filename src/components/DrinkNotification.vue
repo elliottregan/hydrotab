@@ -20,6 +20,11 @@ export default defineComponent({
       this.$store.commit('increment')
     },
   },
+  beforeRouteLeave() {
+    if (this.$store.getters.glassRequired) {
+      this.$store.commit('updateGlassRequired', false)
+    }
+  }
 })
 </script>
 

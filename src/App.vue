@@ -4,7 +4,7 @@
       <SettingsLink v-if="isHome" />
       <BackLink v-if="!isHome" />
     </nav>
-    <main class="app-content centered-content">
+    <main class="app-content centered-content content-container">
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
           <component :is="Component" />
@@ -43,16 +43,27 @@ export default defineComponent({
     isSettings() {
       return this.$route.matched.some(({ name }) => name === 'Settings')
     },
+    isNotification() {
+      return this.$route.matched.some(({ name }) => name === 'DrinkNotification')
+    },
     fillPercent() {
-      if (this.isHome) {
+      if (this.isHome || this.isNotification) {
         return this.$store.getters.getGoalPercent
       } else if (this.isSettings) {
         return 100
       } else {
         return 0
       }
+    },
+    glassRequired() {
+      return this.$store.state.notifications.glassRequired
     }
   },
+  watch: {
+    glassRequired(value) {
+      this.$router.push({ name: value ? 'DrinkNotification' : 'Home' })
+    }
+  }
 })
 </script>
 

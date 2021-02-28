@@ -3,6 +3,8 @@ import { createStore } from 'vuex'
 import { Store } from 'vuex'
 import persistData from './plugins/persistData';
 import resetDaily from './plugins/resetDaily';
+import resetOnDelay from './plugins/resetOnDelay';
+import mutateOnMutate from './plugins/mutateOnMutate';
 
 import mutations from './mutations'
 
@@ -18,14 +20,22 @@ export interface State {
   options: {
     glassesGoal: number,
     units: Unit,
-  }
+  },
+  notifications: {
+    glassRequired: Boolean,
+  },
 }
 
 // define injection key
 export const key: InjectionKey<Store<State>> = Symbol()
 
 export const store = createStore<State>({
-  plugins: [persistData, resetDaily],
+  plugins: [
+    persistData,
+    resetDaily,
+    resetOnDelay('updateGlassRequired', true, 60*60),
+    mutateOnMutate('increment', 'updateGlassRequired', false),
+  ],
 
   state: {
     dateCreated: new Date().toLocaleDateString(),
@@ -36,6 +46,9 @@ export const store = createStore<State>({
         label: 'fl oz',
         nPerGlass: 8,
       }
+    },
+    notifications: {
+      glassRequired: false,
     },
   },
   mutations,
@@ -52,9 +65,12 @@ export const store = createStore<State>({
     units({ options }) {
       return options.units.label
     },
-    glassesLocale(state) {
+    glassesLocale(state:State) {
       return state.glasses * state.options.units.nPerGlass
     },
+    glassRequired(state:State) {
+      return state.notifications.glassRequired
+    }
   },
 })
 

@@ -17,4 +17,7 @@ export default {
     if (state.glasses === 0) return;
     state.glasses--
   },
+  updateGlassRequired(state:State, value:Boolean) {
+    state.notifications.glassRequired = value
+  }
 }
