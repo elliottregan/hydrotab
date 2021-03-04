@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import store from '../store'
 import Icon from '../components/Icon'
 
 export default {
@@ -20,16 +19,16 @@ export default {
 
   computed: {
     total() {
-      return store.getters.glasses
+      return this.$store.getters.glasses
     }
   },
 
   methods: {
     increaseTotal() {
-      store.commit('increment')
+      this.$store.commit('increment')
     },
     decreaseTotal() {
-      store.commit('decrement')
+      this.$store.commit('decrement')
     },
   },
 }

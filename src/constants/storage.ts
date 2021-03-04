@@ -1,15 +1,14 @@
 export class BrowserStoragePolymorph {
-  #storage
+  #storage:string
 
   constructor(storage:string) {
     this.#storage = storage
   }
 
-  getItem(key) {
+  getItem(key:string) {
     return {
       'localStorage': (() => window.localStorage.getItem(key))(),
       'sessionStorage': (() => window.sessionStorage.getItem(key))(),
-      // @ts-ignore
       'browser': (async () => {
         // @ts-ignore
         if(typeof browser !== 'undefined') {
@@ -23,14 +22,13 @@ export class BrowserStoragePolymorph {
     }[this.#storage]
   }
 
-  setItem(key, value) {
+  setItem(key:string, value:any) {
     return {
       'localStorage': (() => window.localStorage.setItem(key, value))(),
       'sessionStorage': (() => window.sessionStorage.setItem(key, value))(),
+      'browser': (async () => {
       // @ts-ignore
-      'browser': (() => {
-      // @ts-ignore
-        return typeof browser !== 'undefined' ? browser.storage.local.set({[key]: value}) : () => {}
+        return typeof browser !== 'undefined' ? await browser.storage.local.set({[key]: value}) : () => {}
       })(),
     }[this.#storage]
   }

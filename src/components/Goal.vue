@@ -4,14 +4,17 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import store from '../store'
 export default defineComponent({
   computed: {
     total () {
-      return store.state.options.glassesGoal
+      // @ts-ignore
+      console.log('total', this.$store.state.options)
+      // @ts-ignore
+      return this.$store.state.options.glassesGoal
     },
     units () {
-      return store.state.options.units
+      // @ts-ignore
+      return this.$store.state.options.units
     },
   }
 })

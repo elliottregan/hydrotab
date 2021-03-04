@@ -19,7 +19,6 @@ export default defineConfig({
   build: {
     write: true,
     target: 'esnext',
-    sourcemap: true,
     rollupOptions: {
       input: {
         'main': './index.html',

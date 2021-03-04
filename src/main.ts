@@ -1,12 +1,14 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import './index.css'
-import { store, key } from './store'
+import { fetchCache, key } from './store'
 import router from './router'
 
-const hydrotabApp = createApp(App)
 
-hydrotabApp.use(store, key);
-hydrotabApp.use(router);
-
-hydrotabApp.mount('#app')
+fetchCache().then(store => {
+  const hydrotabApp = createApp(App)
+  console.log(store)
+  hydrotabApp.use(store, key);
+  hydrotabApp.use(router);
+  hydrotabApp.mount('#app')
+})

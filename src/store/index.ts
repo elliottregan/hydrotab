@@ -5,6 +5,7 @@ import persistData from './plugins/persistData';
 import resetDaily from './plugins/resetDaily';
 import resetOnDelay from './plugins/resetOnDelay';
 import mutateOnMutate from './plugins/mutateOnMutate';
+import { BrowserStoragePolymorph } from '../constants';
 
 import mutations from './mutations'
 
@@ -29,49 +30,56 @@ export interface State {
 // define injection key
 export const key: InjectionKey<Store<State>> = Symbol()
 
-export const store = createStore<State>({
-  plugins: [
-    persistData,
-    resetDaily,
-    resetOnDelay('updateGlassRequired', true, 60*60*1000),
-    mutateOnMutate('increment', 'updateGlassRequired', false),
-  ],
+// @ts-ignore
+const polyStore = new BrowserStoragePolymorph(typeof browser !== 'undefined' ? 'browser' : 'localStorage')
 
-  state: {
-    dateCreated: new Date().toLocaleDateString(),
-    glasses: 0,
-    options: {
-      glassesGoal: 8,
-      units: {
-        label: 'fl oz',
-        nPerGlass: 8,
+export const fetchCache = async () => {
+
+  const jsonStore = await polyStore.getItem('store')
+  const cachedStore = JSON.parse(jsonStore || '{}')
+
+  return createStore<State>({
+    plugins: [
+      persistData(cachedStore, polyStore),
+      resetDaily,
+      resetOnDelay('updateGlassRequired', true, 60*60*1000),
+      mutateOnMutate('increment', 'updateGlassRequired', false),
+    ],
+  
+    state: {
+      dateCreated: new Date().toLocaleDateString(),
+      glasses: 0,
+      options: {
+        glassesGoal: 8,
+        units: {
+          label: 'fl oz',
+          nPerGlass: 8,
+        }
+      },
+      notifications: {
+        glassRequired: false,
+      },
+    },
+    mutations,
+    getters: {
+      glasses({ glasses }) {
+        return glasses
+      },
+      glassesGoal({ options }) {
+        return options.glassesGoal
+      },
+      getGoalPercent({ glasses, options }) {
+        return (glasses / options.glassesGoal * 100)
+      },
+      units({ options }) {
+        return options.units.label
+      },
+      glassesLocale(state:State) {
+        return state.glasses * state.options.units.nPerGlass
+      },
+      glassRequired(state:State) {
+        return state.notifications.glassRequired
       }
     },
-    notifications: {
-      glassRequired: false,
-    },
-  },
-  mutations,
-  getters: {
-    glasses({ glasses }) {
-      return glasses
-    },
-    glassesGoal({ options }) {
-      return options.glassesGoal
-    },
-    getGoalPercent({ glasses, options }) {
-      return (glasses / options.glassesGoal * 100)
-    },
-    units({ options }) {
-      return options.units.label
-    },
-    glassesLocale(state:State) {
-      return state.glasses * state.options.units.nPerGlass
-    },
-    glassRequired(state:State) {
-      return state.notifications.glassRequired
-    }
-  },
-})
-
-export default store
+  })
+}
