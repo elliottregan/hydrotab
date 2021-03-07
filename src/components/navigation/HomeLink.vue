@@ -1,7 +1,7 @@
 <template>
-  <router-link to="/" class="btn btn--ghost">
-    <Icon :name="'home'" />
-    <span>Home</span>
+  <router-link to="/" class="btn">
+    <Icon :name="icon" />
+    <span>{{ label }}</span>
   </router-link>
 </template>
 
@@ -11,6 +11,16 @@ import Icon from '../../components/Icon'
 export default {
   components: {
     Icon,
+  },
+  props: {
+    label: {
+      type: String,
+      default: 'Home',
+    },
+    icon: {
+      type: String,
+      default: 'home',
+    },
   },
 }
 </script>

@@ -3,7 +3,6 @@ import { createStore } from 'vuex'
 import { Store } from 'vuex'
 import persistData from './plugins/persistData';
 import resetDaily from './plugins/resetDaily';
-import resetOnDelay from './plugins/resetOnDelay';
 import mutateOnMutate from './plugins/mutateOnMutate';
 import { BrowserStoragePolymorph } from '../constants';
 
@@ -24,6 +23,7 @@ export interface State {
   },
   notifications: {
     glassRequired: Boolean,
+    lastGlass: Date,
   },
 }
 
@@ -42,7 +42,6 @@ export const fetchCache = async () => {
     plugins: [
       persistData(cachedStore, polyStore),
       resetDaily,
-      resetOnDelay('updateGlassRequired', true, 60*60*1000),
       mutateOnMutate('increment', 'updateGlassRequired', false),
     ],
   
@@ -58,6 +57,7 @@ export const fetchCache = async () => {
       },
       notifications: {
         glassRequired: false,
+        lastGlass: new Date(),
       },
     },
     mutations,

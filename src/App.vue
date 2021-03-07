@@ -25,10 +25,6 @@ import SettingsLink from './components/navigation/SettingsLink.vue'
 import HomeLink from './components/navigation/HomeLink.vue'
 import BackLink from './components/navigation/BackLink.vue'
 
-const env = import.meta.env
-
-console.log(env)
-
 export default defineComponent({
   name: 'App',
   components: {
@@ -60,14 +56,23 @@ export default defineComponent({
         return 0
       }
     },
-    glassRequired() {
-      return this.$store.state.notifications.glassRequired
+    lastGlass() {
+      return this.$store.state.notifications.lastGlass
+    },
+  },
+  methods: {
+    showNotificationIfRequired() {
+      const oneHour = 60 * 60 * 1000
+      if (new Date().getTime() - new Date(this.lastGlass).getTime() > oneHour) {
+        this.$router.push({ name: 'DrinkNotification' })
+      }
     }
   },
-  watch: {
-    glassRequired(value) {
-      this.$router.push({ name: value ? 'DrinkNotification' : 'Home' })
-    }
+  mounted() {
+    this.showNotificationIfRequired()
+    window.addEventListener('focus', () => {
+      this.showNotificationIfRequired()
+    })
   }
 })
 </script>

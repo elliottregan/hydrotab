@@ -19,5 +19,6 @@ export default {
   },
   updateGlassRequired(state:State, value:Boolean) {
     state.notifications.glassRequired = value
+    state.notifications.lastGlass = new Date()
   }
 }

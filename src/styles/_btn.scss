@@ -22,6 +22,7 @@
   height: 3em;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5em;
   vertical-align: middle;
   
@@ -44,6 +45,10 @@
     background-color: transparent;
     border: none;
     text-shadow: none;
+  }
+
+  &--full {
+    width: 100%;
   }
 
 }

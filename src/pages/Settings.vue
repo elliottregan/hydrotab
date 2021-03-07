@@ -4,7 +4,16 @@
       <h1>Settings</h1>
       <div class="field">
         <label for="goal">Goal (glasses):</label>
-        <input id="goal" type="number" :value="options.glassesGoal" @input="updateGoal" class="input">
+        <input
+          id="goal"
+          type="number"
+          :value="options.glassesGoal"
+          @input="updateGoal"
+          class="input"
+        />
+      </div>
+      <div>
+        <HomeLink label="Done" icon="check" class="btn--primary" />
       </div>
     </div>
   </main>
@@ -13,23 +22,24 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { mapState } from 'vuex'
+import HomeLink from '../components/navigation/HomeLink.vue'
 
 export default defineComponent({
   components: {
+    HomeLink,
   },
   computed: {
     ...mapState(['options']),
   },
   methods: {
-    updateGoal({ target }:Event) {
+    updateGoal({ target }: Event) {
       this.$store.commit('updateGoal', (<HTMLInputElement>target).value)
-    }
-  }
+    },
+  },
 })
 </script>
 
 <style scoped>
-
 .centered-content {
   display: flex;
   justify-content: center;
@@ -39,5 +49,4 @@ export default defineComponent({
 .input {
   padding: 0.5em;
 }
-
 </style>

@@ -6,7 +6,6 @@
     <div class="total-units">{{ glasses }} of {{ glassesGoal }} glasses</div>
     <div class="button-row">
       <UpdateTotal />
-      <!-- <DrinkNotification /> -->
     </div>
   </div>
 </template>
@@ -17,7 +16,6 @@ import TotalGlasses from '../components/TotalGlasses.vue'
 import Goal from '../components/Goal.vue'
 import UpdateTotal from '../components/UpdateTotal.vue'
 import Icon from '../components/Icon'
-import DrinkNotification from '../components/DrinkNotification.vue'
 import { mapGetters } from 'vuex'
 
 export default defineComponent({
@@ -26,7 +24,6 @@ export default defineComponent({
     Goal,
     UpdateTotal,
     Icon,
-    DrinkNotification,
   },
   computed: {
     ...mapGetters([
@@ -53,7 +50,6 @@ export default defineComponent({
 }
 
 .total-units {
-  color: #666;
   font-size: 1.5em;
   text-align: left;
 }
