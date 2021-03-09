@@ -12,7 +12,15 @@ export default defineConfig({
         [
           'public/manifest.json',
           'manifest.json'
-        ]
+        ],
+        [
+          'public/wave.png',
+          'wave.png'
+        ],
+        [
+          'public/wave.svg',
+          'wave.svg'
+        ],
       ],
     }),
     zip(),
