@@ -1,20 +1,21 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import copy from 'rollup-plugin-copy'
+import copy from 'rollup-plugin-copy2'
 import inject from '@rollup/plugin-inject';
+import zip from 'rollup-plugin-zip';
 
 export default defineConfig({
   plugins: [
     vue(),
     copy({
-      targets: [
-        {
-          src: './public/manifest.json',
-          dest: './dist'
-        }
+      assets: [
+        [
+          'public/manifest.json',
+          'manifest.json'
+        ]
       ],
-      hook: 'writeBundle'
     }),
+    zip(),
   ],
   build: {
     write: true,

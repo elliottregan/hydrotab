@@ -1,6 +1,6 @@
 {
   "name": "hydrotab",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "dev:browser": "vite -c vite.config.browser.ts",
@@ -24,7 +24,8 @@
     "@vue/compiler-sfc": "^3.0.7",
     "@vuedx/typecheck": "^0.6.0",
     "@vuedx/typescript-plugin-vue": "^0.6.0",
-    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-copy2": "^0.2.0",
+    "rollup-plugin-zip": "^1.0.1",
     "sass": "^1.32.8",
     "typescript": "^4.2.3",
     "vite": "^2.0.5"
