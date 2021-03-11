@@ -1,5 +1,7 @@
 .card {
   width: 100%;
+  min-width: 30rem;
+  max-width: 100%;
   box-sizing: border-box;
   background: var(--color-content-bg);
   padding: 2rem;

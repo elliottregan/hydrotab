@@ -36,6 +36,10 @@ h1 {
   font-size: 3em;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .content-container {
   max-width: 60rem;
   padding: 0 1rem;
@@ -49,16 +53,37 @@ h1 {
 }
 
 .field {
-  margin-bottom: 1em;
+  margin: 1em 0;
 
   &__units {
     margin-left: 0.5em;
   }
 }
 
-label {
+.input {
+  border-radius: 0.35em;
+  background-color: transparentize($color: #000, $amount: .95);
+  border: 1px solid transparentize($color: #000, $amount: .8);
+  padding: 0.5em 0.75em;
+  font-size: 1rem;
+  appearance: none;
+  width: 100%;
+  max-width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.label {
   display: block;
   font-weight: 600;
   margin-bottom: 0.5em;
 }
 
+.radio-field {
+  .label {
+    display: inline-block;
+    margin-left: 0.5em;
+  }
+}

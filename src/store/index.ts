@@ -5,13 +5,9 @@ import persistData from './plugins/persistData';
 import resetDaily from './plugins/resetDaily';
 import mutateOnMutate from './plugins/mutateOnMutate';
 import { BrowserStoragePolymorph } from '../constants';
+import { Unit } from "../common/types";
 
 import mutations from './mutations'
-
-type Unit = {
-  label: string,
-  nPerGlass: number,
-}
 
 // define your typings for the store state
 export interface State {
@@ -51,6 +47,7 @@ export const fetchCache = async () => {
       options: {
         glassesGoal: 8,
         units: {
+          type: 'Imperial',
           label: 'fl oz',
           nPerGlass: 8,
         }

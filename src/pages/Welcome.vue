@@ -3,7 +3,7 @@
     <div class="percent">
       <TotalGlasses />
     </div>
-    <div class="total-units">{{ glasses }} of {{ glassesGoal }} glasses</div>
+    <div class="total-units">{{ glasses }} glasses | {{ totalInUnits }}{{ units.label }}</div>
     <div class="button-row">
       <UpdateTotal />
     </div>
@@ -17,6 +17,7 @@ import Goal from '../components/Goal.vue'
 import UpdateTotal from '../components/UpdateTotal.vue'
 import Icon from '../components/Icon'
 import { mapGetters } from 'vuex'
+import { Unit } from "../common/types";
 
 export default defineComponent({
   components: {
@@ -30,6 +31,12 @@ export default defineComponent({
       'glasses',
       'glassesGoal',
     ]),
+    units(): Unit {
+      return this.$store.state.options.units;
+    },
+    totalInUnits(): number {
+      return this.units.nPerGlass * this.glasses
+    }
   },
 
 })

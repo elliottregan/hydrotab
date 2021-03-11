@@ -1,4 +1,5 @@
 import { State } from './index'
+import { Unit } from "../common/types";
 
 export default {
   updateDateCreated(state:State, newDate:string) {
@@ -6,6 +7,9 @@ export default {
   },
   updateGoal(state:State, newGoal:number) {
     state.options.glassesGoal = newGoal;
+  },
+  updateUnits(state:State, unit:Unit) {
+    state.options.units = unit;
   },
   updateTotal(state:State, newTotal:number) {
     state.glasses = newTotal
