@@ -25,7 +25,7 @@
   justify-content: center;
   gap: 0.5em;
   vertical-align: middle;
-  
+
   & + & {
     margin-left: 1rem;
   }
@@ -49,6 +49,12 @@
 
   &--full {
     width: 100%;
+  }
+
+  .feather {
+    height: 1em;
+    width: 1em;
+    font-size: 1.1em;
   }
 
 }

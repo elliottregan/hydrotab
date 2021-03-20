@@ -35,7 +35,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.icon {
-  display: inline-flex;
+
+
+.btn {
+  span {
+    transform: translateY(-0.035em);
+  }
+
+  .icon {
+    display: inline-flex;
+  }
 }
 </style>

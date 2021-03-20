@@ -3,7 +3,9 @@
     <div class="percent">
       <TotalGlasses />
     </div>
-    <div class="total-units">{{ glasses }} glasses | {{ totalInUnits }}{{ units.label }}</div>
+    <div class="total-units">
+      {{ glasses }} glasses &middot; {{ totalInUnits }}{{ units.label }}
+    </div>
     <div class="button-row">
       <UpdateTotal />
     </div>
@@ -17,7 +19,7 @@ import Goal from '../components/Goal.vue'
 import UpdateTotal from '../components/UpdateTotal.vue'
 import Icon from '../components/Icon'
 import { mapGetters } from 'vuex'
-import { Unit } from "../common/types";
+import { Unit } from '../common/types'
 
 export default defineComponent({
   components: {
@@ -27,18 +29,14 @@ export default defineComponent({
     Icon,
   },
   computed: {
-    ...mapGetters([
-      'glasses',
-      'glassesGoal',
-    ]),
+    ...mapGetters(['glasses', 'glassesGoal']),
     units(): Unit {
-      return this.$store.state.options.units;
+      return this.$store.state.options.units
     },
     totalInUnits(): number {
       return this.units.nPerGlass * this.glasses
-    }
+    },
   },
-
 })
 </script>
 
@@ -57,6 +55,7 @@ export default defineComponent({
 }
 
 .total-units {
+  opacity: 0.7;
   font-size: 1.5em;
   text-align: left;
 }
