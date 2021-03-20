@@ -7,9 +7,9 @@
   "permissions": ["storage"],
   "manifest_version": 2,
   "icons": {
-    "16": "wave.svg",
-    "48": "wave.svg",
-    "128": "wave.svg"
+    "16": "wave-16.png",
+    "48": "wave-48.png",
+    "128": "wave-128.png"
   },
   "browser_action": {
     "default_icon": "wave.png",

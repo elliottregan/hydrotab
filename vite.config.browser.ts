@@ -18,6 +18,18 @@ export default defineConfig({
           'wave.png'
         ],
         [
+          'public/wave-16.png',
+          'wave-16.png'
+        ],
+        [
+          'public/wave-48.png',
+          'wave-48.png'
+        ],
+        [
+          'public/wave-128.png',
+          'wave-128.png'
+        ],
+        [
           'public/wave.svg',
           'wave.svg'
         ],
