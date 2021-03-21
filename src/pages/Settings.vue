@@ -69,7 +69,7 @@ export default defineComponent({
       get(): Unit {
         return this.$store.state.options.units
       },
-      set(value): void {
+      set(value:Unit): void {
         this.$store.commit('updateUnits', value)
       },
     }
@@ -77,10 +77,6 @@ export default defineComponent({
   methods: {
     updateGoal({ target }: Event) {
       this.$store.commit('updateGoal', (<HTMLInputElement>target).value)
-    },
-    updateUnits({ target }: Event) {
-      console.log((<HTMLInputElement>target).value)
-      this.$store.commit('updateUnits', (<HTMLInputElement>target).value)
     },
   },
 })
