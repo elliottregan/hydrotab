@@ -5,6 +5,9 @@ export default {
   updateDateCreated(state:State, newDate:string) {
     state.dateCreated = newDate
   },
+  updateShowTopsites(state:State, show:boolean) {
+    state.options.showTopSites = show;
+  },
   updateGoal(state:State, newGoal:number) {
     state.options.glassesGoal = newGoal;
   },

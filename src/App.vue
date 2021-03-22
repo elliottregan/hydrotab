@@ -34,10 +34,6 @@ export default defineComponent({
     BackLink,
     Background,
   },
-  data() {
-    return {
-    }
-  },
   computed: {
     isHome() {
       return this.$route.matched.some(({ name }) => name === 'Home')
@@ -87,7 +83,7 @@ export default defineComponent({
   transition: opacity ease 300ms;
   position: fixed;
   left: 0;
-  bottom: 0;
+  top: 0;
 
   &:hover,
   &:focus {

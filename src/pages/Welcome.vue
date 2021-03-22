@@ -9,7 +9,7 @@
     <div class="button-row">
       <UpdateTotal />
     </div>
-    <div class="card">
+    <div v-if="showTopSites" class="card">
       <TopSitesList class="topsites-list" />
     </div>
   </div>
@@ -34,7 +34,7 @@ export default defineComponent({
     Icon,
   },
   computed: {
-    ...mapGetters(['glasses', 'glassesGoal']),
+    ...mapGetters(['glasses', 'glassesGoal', 'showTopSites']),
     units(): Unit {
       return this.$store.state.options.units
     },
