@@ -23,6 +23,7 @@ import { defineComponent } from 'vue'
 import Background from './components/Background.vue'
 import SettingsLink from './components/navigation/SettingsLink.vue'
 import HomeLink from './components/navigation/HomeLink.vue'
+import TopSitesLink from './components/navigation/TopSitesLink.vue'
 import BackLink from './components/navigation/BackLink.vue'
 
 export default defineComponent({
@@ -103,6 +104,7 @@ export default defineComponent({
 
 .app-content {
   flex: 1 0 auto;
+  padding: 6rem 2rem;
 }
 
 .fade-enter-active,

@@ -9,6 +9,9 @@
     <div class="button-row">
       <UpdateTotal />
     </div>
+    <div class="card">
+      <TopSitesList class="topsites-list" />
+    </div>
   </div>
 </template>
 
@@ -17,6 +20,7 @@ import { defineComponent } from 'vue'
 import TotalGlasses from '../components/TotalGlasses.vue'
 import Goal from '../components/Goal.vue'
 import UpdateTotal from '../components/UpdateTotal.vue'
+import TopSitesList from "../components/TopSitesList.vue";
 import Icon from '../components/Icon'
 import { mapGetters } from 'vuex'
 import { Unit } from '../common/types'
@@ -26,6 +30,7 @@ export default defineComponent({
     TotalGlasses,
     Goal,
     UpdateTotal,
+    TopSitesList,
     Icon,
   },
   computed: {
@@ -66,5 +71,9 @@ export default defineComponent({
 
 .button-row {
   margin-top: 4rem;
+}
+
+.card {
+  margin: 2rem auto;
 }
 </style>
