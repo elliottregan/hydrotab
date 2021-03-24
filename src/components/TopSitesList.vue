@@ -1,9 +1,12 @@
 <template>
   <ul>
     <li v-for="site in topSites" :key="site.url">
-      <img v-if="site.favicon" :src="site.favicon" alt="asdf" class="favicon-img">
-      <Icon name="link" v-else  class="favicon-fallback"/>
-      <a :href="site.url">{{ site.title }}</a>
+      <a :href="site.url" class="topsite-link">
+        <img v-if="site.favicon" :src="site.favicon" alt="asdf" class="topsite-link__icon favicon-img">
+        <Icon name="link" v-else  class="topsite-link__icon favicon-fallback"/>
+        <span class="topsite-link__title">{{ site.title }}</span>
+        <span class="topsite-link__url">{{ getUrlOrigin(site.url) }}</span>
+      </a>
     </li>
   </ul>
 </template>
@@ -51,7 +54,7 @@ export default defineComponent({
   },
   methods: {
     fetchFavicon(site) {
-      const faviconUrl = new URL(site.url).origin + '/favicon.ico'
+      const faviconUrl = this.getUrlOrigin(site.url) + '/favicon.ico'
       let fetchIcon = new Promise((resolve, reject) => {
         const preload = new Image();
         preload.addEventListener('load', () => {
@@ -70,9 +73,15 @@ export default defineComponent({
         .catch(result => {
           return site.favicon = result
         })
+    },
+    getUrlOrigin(url:string): string {
+      return new URL(url).origin
     }
   },
-  created() {
+  async created() {
+    if (import.meta.env.MODE === 'browser') {
+      this.topSites = await browser.topSites.get();
+    }
     this.topSites.forEach(site => {
       this.fetchFavicon(site)
     })
@@ -90,20 +99,36 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  max-width: 100%;
 }
 
-li {
+.topsite-link {
   display: flex;
   align-items: center;
-  margin: 0.5em 0;
+  margin: 0.75em 0;
+  color: inherit;
 
-  a {
-    color: inherit;
+  &__title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 1rem;
+    min-width: 0;
   }
+
+  &__url {
+    opacity: 0.65;
+    margin-left: auto;
+  }
+
+  &__icon {
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
 }
 
 .favicon-img {
-  display: inline-block;
   height: 1.4em;
   width: 1.4em;
   margin-right: 0.5em;
@@ -111,8 +136,8 @@ li {
 }
 
 .favicon-fallback {
-    height: 1.2em;
-    width: 1.2em;
-    margin-right: 0.6em;
-  }
+  height: 1.2em;
+  width: 1.2em;
+  margin-right: 0.6em;
+}
 </style>

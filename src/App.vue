@@ -5,7 +5,7 @@
       <BackLink v-if="!isHome" />
       <pre><wbr></pre>
     </nav>
-    <main class="app-content centered-content content-container">
+    <main class="app-content content-container">
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
           <component :is="Component" />
@@ -23,7 +23,6 @@ import { defineComponent } from 'vue'
 import Background from './components/Background.vue'
 import SettingsLink from './components/navigation/SettingsLink.vue'
 import HomeLink from './components/navigation/HomeLink.vue'
-import TopSitesLink from './components/navigation/TopSitesLink.vue'
 import BackLink from './components/navigation/BackLink.vue'
 
 export default defineComponent({
@@ -99,7 +98,6 @@ export default defineComponent({
 }
 
 .app-content {
-  flex: 1 0 auto;
   padding: 6rem 2rem;
 }
 

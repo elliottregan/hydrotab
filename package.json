@@ -3,9 +3,9 @@
   "version": "0.0.3",
   "scripts": {
     "dev": "vite",
-    "dev:browser": "vite -c vite.config.browser.ts",
+    "dev:browser": "vite -c vite.config.browser.ts --mode browser-dev",
     "build": "vite build",
-    "build:browser": "vite build -c vite.config.browser.ts",
+    "build:browser": "vite build -c vite.config.browser.ts --mode browser",
     "serve": "vite preview",
     "typecheck": "vuedx-typecheck"
   },
