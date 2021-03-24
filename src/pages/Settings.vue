@@ -39,7 +39,6 @@
 import { defineComponent } from 'vue'
 import { mapState } from 'vuex'
 import { Unit } from "../common/types";
-import 'vue-next-select/dist/index.min.css'
 
 import HomeLink from '../components/navigation/HomeLink.vue'
 
