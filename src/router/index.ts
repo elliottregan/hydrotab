@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 
 import Welcome from '../pages/Welcome.vue';
+import TopSites from '../pages/TopSites.vue';
 import Settings from '../pages/Settings.vue';
 import DrinkNotification from '../components/DrinkNotification.vue'
 
@@ -16,6 +17,11 @@ const routes = [
     component: DrinkNotification,
   },
   {
+    name: 'TopSites',
+    path: '/topsites',
+    component: TopSites,
+  },
+  {
     name: 'Settings',
     path: '/settings',
     component: Settings,
@@ -23,7 +29,7 @@ const routes = [
 ]
 
 export default createRouter({
-  // createWebHashHistory is requored because WebHistory isn't available
+  // createWebHashHistory is required because WebHistory isn't available
   history: createWebHashHistory(),
   routes,
 });

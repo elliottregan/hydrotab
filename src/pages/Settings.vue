@@ -1,7 +1,7 @@
 <template>
   <main class="centered-content">
     <div class="card">
-      <h1 class="card__title">Settings</h1>
+      <h1 class="card__title">Goal Settings</h1>
       <div class="field">
         <label for="goal" class="label">Goal (glasses):</label>
         <input
@@ -27,6 +27,16 @@
           >
           <label :for="unit.type" class="label">{{ unit.type }}</label>
         </div>
+      </div>
+      <h1 class="card__title">App Settings</h1>
+      <div class="field radio-field">
+        <input
+          id="topsites"
+          type="checkbox"
+          :checked="options.showTopSites"
+          @change="updateShowTopsites"
+        />
+        <label for="topsites" class="label">Show Top Sites</label>
       </div>
       <div>
         <HomeLink label="Done" icon="check" class="btn--primary" />
@@ -76,6 +86,9 @@ export default defineComponent({
   methods: {
     updateGoal({ target }: Event) {
       this.$store.commit('updateGoal', (<HTMLInputElement>target).value)
+    },
+    updateShowTopsites({ target }: Event) {
+      this.$store.commit('updateShowTopsites', (<HTMLInputElement>target).checked)
     },
   },
 })

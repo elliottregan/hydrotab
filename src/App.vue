@@ -5,7 +5,7 @@
       <BackLink v-if="!isHome" />
       <pre><wbr></pre>
     </nav>
-    <main class="app-content centered-content content-container">
+    <main class="app-content content-container">
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
           <component :is="Component" />
@@ -32,10 +32,6 @@ export default defineComponent({
     HomeLink,
     BackLink,
     Background,
-  },
-  data() {
-    return {
-    }
   },
   computed: {
     isHome() {
@@ -86,7 +82,7 @@ export default defineComponent({
   transition: opacity ease 300ms;
   position: fixed;
   left: 0;
-  bottom: 0;
+  top: 0;
 
   &:hover,
   &:focus {
@@ -102,7 +98,7 @@ export default defineComponent({
 }
 
 .app-content {
-  flex: 1 0 auto;
+  padding: 6rem 2rem;
 }
 
 .fade-enter-active,

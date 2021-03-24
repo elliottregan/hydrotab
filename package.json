@@ -3,9 +3,9 @@
   "version": "0.0.3",
   "scripts": {
     "dev": "vite",
-    "dev:browser": "vite -c vite.config.browser.ts",
+    "dev:browser": "vite -c vite.config.browser.ts --mode browser-dev",
     "build": "vite build",
-    "build:browser": "vite build -c vite.config.browser.ts",
+    "build:browser": "vite build -c vite.config.browser.ts --mode browser",
     "serve": "vite preview",
     "typecheck": "vuedx-typecheck"
   },
@@ -13,13 +13,13 @@
     "animejs": "^3.2.1",
     "feather-icons": "^4.28.0",
     "vue": "^3.0.7",
-    "vue-router": "^4.0.4",
+    "vue-router": "^4.0.5",
     "vuex": "^4.0.0",
     "webextension-polyfill-ts": "^0.25.0"
   },
   "devDependencies": {
     "@rollup/plugin-inject": "^4.0.2",
-    "@types/animejs": "^3.1.2",
+    "@types/animejs": "^3.1.3",
     "@types/feather-icons": "^4.7.0",
     "@vitejs/plugin-vue": "^1.1.5",
     "@vue/compiler-sfc": "^3.0.7",
@@ -29,6 +29,6 @@
     "rollup-plugin-zip": "^1.0.1",
     "sass": "^1.32.8",
     "typescript": "^4.2.3",
-    "vite": "^2.0.5"
+    "vite": "^2.1.2"
   }
 }

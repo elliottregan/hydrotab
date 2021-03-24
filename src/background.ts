@@ -6,3 +6,5 @@ browser.runtime.onInstalled.addListener(async ({ reason }) => {
     });
   }
 });
+
+console.log(browser.topSites.get())

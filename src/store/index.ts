@@ -16,6 +16,7 @@ export interface State {
   options: {
     glassesGoal: number,
     units: Unit,
+    showTopSites: Boolean,
   },
   notifications: {
     glassRequired: Boolean,
@@ -50,7 +51,8 @@ export const fetchCache = async () => {
           type: 'Imperial',
           label: 'fl oz',
           nPerGlass: 8,
-        }
+        },
+        showTopSites: false,
       },
       notifications: {
         glassRequired: false,
@@ -71,12 +73,15 @@ export const fetchCache = async () => {
       units({ options }) {
         return options.units.label
       },
+      showTopSites(state:State) {
+        return state.options.showTopSites
+      },
       glassesLocale(state:State) {
         return state.glasses * state.options.units.nPerGlass
       },
       glassRequired(state:State) {
         return state.notifications.glassRequired
-      }
+      },
     },
   })
 }
